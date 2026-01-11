@@ -1,0 +1,26 @@
+---
+interface Props {
+  title: string;
+  description?: string;
+  image?: string;
+  imageAlt?: string;
+}
+
+const { title, description, image, imageAlt = title } = Astro.props;
+---
+
+<div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
+  {image && (
+    <img
+      src={image}
+      alt={imageAlt}
+      class="w-full h-48 object-cover"
+    />
+  )}
+  <div class="p-6">
+    <h3 class="text-xl font-semibold mb-2">{title}</h3>
+    {description && (
+      <p class="text-gray-600">{description}</p>
+    )}
+  </div>
+</div>
