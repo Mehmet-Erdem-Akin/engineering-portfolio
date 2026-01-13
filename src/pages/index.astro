@@ -1,14 +1,674 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import Card from '../components/Card.astro';
 ---
 
-<Layout title="Ana Sayfa">
-  <main class="container mx-auto px-4 py-8">
-    <h1 class="text-4xl font-bold text-center mb-8">
-      Engineering Portfolio
+<Layout title="Ana Sayfa - Kompresör Bayi">
+  <!-- Hero Section -->
+  <section class="relative bg-gray-900 text-white py-16 md:py-24">
+    <div class="container relative z-10">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center min-h-[600px]">
+        <!-- Left Side: Text Content -->
+        <div class="flex flex-col justify-center">
+          <h1 class="text-5xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight">
+            İstediğiniz Her Şeyi Üretiyoruz
     </h1>
-    <p class="text-xl text-center text-gray-600">
-      Astro.js + Tailwind CSS ile oluşturulmuş modern bir portfolio sitesi
-    </p>
-  </main>
+          <p class="text-lg md:text-xl text-gray-400 mb-8 leading-relaxed max-w-xl">
+            Endüstriyel kompresör ve makine mühendisliği alanında uzman kadromuzla, 
+            size en iyi hizmeti sunmak için buradayız. Yılların deneyimi ve 
+            teknolojik altyapımızla projelerinize değer katıyoruz.
+          </p>
+          <div class="flex flex-col sm:flex-row gap-4 mb-12">
+            <a href="/products" class="bg-primary hover:bg-primary-dark text-white px-8 py-4 rounded-lg font-semibold transition inline-flex items-center justify-center">
+              Hizmetlerimiz
+            </a>
+            <a href="/products" class="text-white hover:text-primary transition inline-flex items-center gap-2">
+              Projeleri Görüntüle
+              <span class="text-primary">→</span>
+            </a>
+          </div>
+          <!-- Statistics Cards -->
+          <div class="grid grid-cols-3 gap-4">
+            <div class="bg-primary rounded-lg p-6">
+              <div class="text-4xl font-bold mb-2">20+</div>
+              <div class="text-sm text-white/90">Piyasada Yıl</div>
+            </div>
+            <div class="bg-primary rounded-lg p-6">
+              <div class="text-4xl font-bold mb-2">200</div>
+              <div class="text-sm text-white/90">Tamamlanan Proje</div>
+            </div>
+            <div class="bg-primary rounded-lg p-6">
+              <div class="text-4xl font-bold mb-2">15</div>
+              <div class="text-sm text-white/90">Dünya Çapında Ofis</div>
+            </div>
+          </div>
+        </div>
+        <!-- Right Side: Image Content -->
+        <div class="relative flex justify-center lg:justify-end overflow-visible">
+          <div class="relative">
+            <!-- Image -->
+            <img 
+              src="/Gemini_Generated_Image_v31j9gv31j9gv31j.png" 
+              alt="Kompresör ve Teknisyen" 
+              class="relative w-full max-w-md h-auto rounded-lg shadow-2xl object-cover z-10"
+              id="hero-image"
+            />
+            <!-- Dot Pattern Block - Sol üst köşe, resmin 1/4'ü kadar -->
+            <div class="absolute top-10 left-10 w-[45%] h-[45%] opacity-30 z-9" style="background-image: radial-gradient(circle, white 1px, transparent 1px); background-size: 12px 12px; transform: translate(-50%, -50%);"></div>
+            
+            <!-- Küçük Kare Görseller - Ana resmin altında, üst katmanda, kenardan taşan -->
+            <div class="absolute -bottom-12 sm:-left-8 -left-2 flex gap-3 z-30 items-baseline">
+              <!-- İlk küçük kare görsel -->
+              <div class="sm:w-52 w-32 sm:h-52 w-32 rounded-lg overflow-hidden shadow-xl border-none border-white/30 bg-gray-900">
+                <img 
+                  src="/Gemini_Generated_Image_v31j9gv31j9gv31j.png" 
+                  alt="Kompresör" 
+                  class="w-full h-full object-cover"
+                />
+              </div>
+              <!-- İkinci küçük kare görsel (daha büyük) -->
+              <div class="sm:w-32 w-24 sm:h-32 h-24 rounded-lg overflow-hidden shadow-xl border-none border-white/30 bg-gray-900">
+                <img 
+                  src="/Gemini_Generated_Image_v31j9gv31j9gv31j.png" 
+                  alt="Kompresör" 
+                  class="w-full h-full object-cover"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- References Logo Slider Section -->
+  <section class="py-12 bg-white border-y border-gray-200">
+    <div class="container">
+      <div class="overflow-hidden">
+        <div class="logo-slider flex gap-12 items-center">
+          <!-- Logo Items -->
+          <div class="logo-item flex-shrink-0 flex items-center justify-center h-20 w-32">
+            <div class="logo-preview bg-gradient-to-br from-gray-300 to-gray-400 rounded-lg p-4 w-full h-full flex items-center justify-center shadow-md hover:shadow-lg hover:scale-110 transition-all duration-300">
+              <div class="text-gray-700 font-bold text-xl">LOGO</div>
+            </div>
+          </div>
+          <div class="logo-item flex-shrink-0 flex items-center justify-center h-20 w-32">
+            <div class="logo-preview bg-gradient-to-br from-gray-300 to-gray-400 rounded-lg p-4 w-full h-full flex items-center justify-center shadow-md hover:shadow-lg hover:scale-110 transition-all duration-300">
+              <div class="text-gray-700 font-bold text-xl">LOGO</div>
+            </div>
+          </div>
+          <div class="logo-item flex-shrink-0 flex items-center justify-center h-20 w-32">
+            <div class="logo-preview bg-gradient-to-br from-gray-300 to-gray-400 rounded-lg p-4 w-full h-full flex items-center justify-center shadow-md hover:shadow-lg hover:scale-110 transition-all duration-300">
+              <div class="text-gray-700 font-bold text-xl">LOGO</div>
+            </div>
+          </div>
+          <div class="logo-item flex-shrink-0 flex items-center justify-center h-20 w-32">
+            <div class="logo-preview bg-gradient-to-br from-gray-300 to-gray-400 rounded-lg p-4 w-full h-full flex items-center justify-center shadow-md hover:shadow-lg hover:scale-110 transition-all duration-300">
+              <div class="text-gray-700 font-bold text-xl">LOGO</div>
+            </div>
+          </div>
+          <div class="logo-item flex-shrink-0 flex items-center justify-center h-20 w-32">
+            <div class="logo-preview bg-gradient-to-br from-gray-300 to-gray-400 rounded-lg p-4 w-full h-full flex items-center justify-center shadow-md hover:shadow-lg hover:scale-110 transition-all duration-300">
+              <div class="text-gray-700 font-bold text-xl">LOGO</div>
+            </div>
+          </div>
+          <div class="logo-item flex-shrink-0 flex items-center justify-center h-20 w-32">
+            <div class="logo-preview bg-gradient-to-br from-gray-300 to-gray-400 rounded-lg p-4 w-full h-full flex items-center justify-center shadow-md hover:shadow-lg hover:scale-110 transition-all duration-300">
+              <div class="text-gray-700 font-bold text-xl">LOGO</div>
+            </div>
+          </div>
+          <!-- Duplicate for seamless loop -->
+          <div class="logo-item flex-shrink-0 flex items-center justify-center h-20 w-32">
+            <div class="logo-preview bg-gradient-to-br from-gray-300 to-gray-400 rounded-lg p-4 w-full h-full flex items-center justify-center shadow-md hover:shadow-lg hover:scale-110 transition-all duration-300">
+              <div class="text-gray-700 font-bold text-xl">LOGO</div>
+            </div>
+          </div>
+          <div class="logo-item flex-shrink-0 flex items-center justify-center h-20 w-32">
+            <div class="logo-preview bg-gradient-to-br from-gray-300 to-gray-400 rounded-lg p-4 w-full h-full flex items-center justify-center shadow-md hover:shadow-lg hover:scale-110 transition-all duration-300">
+              <div class="text-gray-700 font-bold text-xl">LOGO</div>
+            </div>
+          </div>
+          <div class="logo-item flex-shrink-0 flex items-center justify-center h-20 w-32">
+            <div class="logo-preview bg-gradient-to-br from-gray-300 to-gray-400 rounded-lg p-4 w-full h-full flex items-center justify-center shadow-md hover:shadow-lg hover:scale-110 transition-all duration-300">
+              <div class="text-gray-700 font-bold text-xl">LOGO</div>
+            </div>
+          </div>
+          <div class="logo-item flex-shrink-0 flex items-center justify-center h-20 w-32">
+            <div class="logo-preview bg-gradient-to-br from-gray-300 to-gray-400 rounded-lg p-4 w-full h-full flex items-center justify-center shadow-md hover:shadow-lg hover:scale-110 transition-all duration-300">
+              <div class="text-gray-700 font-bold text-xl">LOGO</div>
+            </div>
+          </div>
+          <div class="logo-item flex-shrink-0 flex items-center justify-center h-20 w-32">
+            <div class="logo-preview bg-gradient-to-br from-gray-300 to-gray-400 rounded-lg p-4 w-full h-full flex items-center justify-center shadow-md hover:shadow-lg hover:scale-110 transition-all duration-300">
+              <div class="text-gray-700 font-bold text-xl">LOGO</div>
+            </div>
+          </div>
+          <div class="logo-item flex-shrink-0 flex items-center justify-center h-20 w-32">
+            <div class="logo-preview bg-gradient-to-br from-gray-300 to-gray-400 rounded-lg p-4 w-full h-full flex items-center justify-center shadow-md hover:shadow-lg hover:scale-110 transition-all duration-300">
+              <div class="text-gray-700 font-bold text-xl">LOGO</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services Section -->
+  <section class="py-16 md:py-20 bg-white">
+    <div class="container">
+      <div class="text-center mb-12">
+        <h2 class="text-4xl md:text-5xl font-bold mb-4">Çoklu Endüstriler İçin Yüksek Performanslı Hizmetler</h2>
+      </div>
+      
+      <!-- Image Slider -->
+      <div class="mb-16 relative">
+        <div class="relative overflow-hidden rounded-2xl">
+          <div id="image-slider" class="flex transition-transform duration-500 ease-in-out">
+            <div class="w-full flex-shrink-0 h-96 bg-gradient-to-r from-primary to-primary-dark relative">
+              <div class="absolute inset-0 flex items-center justify-center">
+                <div class="text-center text-white px-8">
+                  <div class="text-7xl mb-4">⚙️</div>
+                  <h3 class="text-4xl font-bold mb-2">Endüstriyel Kompresör Çözümleri</h3>
+                  <p class="text-xl opacity-90">Yüksek performans ve güvenilirlik</p>
+                </div>
+              </div>
+            </div>
+            <div class="w-full flex-shrink-0 h-96 bg-gradient-to-r from-gray-800 to-gray-900 relative">
+              <div class="absolute inset-0 flex items-center justify-center">
+                <div class="text-center text-white px-8">
+                  <div class="text-7xl mb-4">🏗️</div>
+                  <h3 class="text-4xl font-bold mb-2">İnşaat Sektörü İçin Özel Çözümler</h3>
+                  <p class="text-xl opacity-90">Projelerinize güç katın</p>
+                </div>
+              </div>
+            </div>
+            <div class="w-full flex-shrink-0 h-96 bg-gradient-to-r from-primary-dark to-primary relative">
+              <div class="absolute inset-0 flex items-center justify-center">
+                <div class="text-center text-white px-8">
+                  <div class="text-7xl mb-4">🔧</div>
+                  <h3 class="text-4xl font-bold mb-2">Makine Mühendisliği Hizmetleri</h3>
+                  <p class="text-xl opacity-90">Teknik uzmanlık ve kalite</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Image Slider Navigation -->
+          <button id="image-slider-prev" class="absolute left-4 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white text-gray-900 w-12 h-12 rounded-full flex items-center justify-center shadow-lg transition-all z-10">
+            <span class="text-2xl">←</span>
+          </button>
+          <button id="image-slider-next" class="absolute right-4 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white text-gray-900 w-12 h-12 rounded-full flex items-center justify-center shadow-lg transition-all z-10">
+            <span class="text-2xl">→</span>
+          </button>
+          <!-- Dots Indicator -->
+          <div class="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 z-10">
+            <button class="image-slider-dot w-3 h-3 rounded-full bg-white/80 hover:bg-white transition-all" data-slide="0"></button>
+            <button class="image-slider-dot w-3 h-3 rounded-full bg-white/40 hover:bg-white/80 transition-all" data-slide="1"></button>
+            <button class="image-slider-dot w-3 h-3 rounded-full bg-white/40 hover:bg-white/80 transition-all" data-slide="2"></button>
+          </div>
+        </div>
+      </div>
+      
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 my-12">
+        <div class="bg-white border border-gray-200 rounded-lg p-8 hover:shadow-xl transition-shadow">
+          <div class="text-5xl mb-6 text-primary">⚙️</div>
+          <h3 class="text-2xl font-bold mb-4">Endüstriyel Kompresörler</h3>
+          <p class="text-gray-600 mb-6">
+            Endüstriyel tesisler için yüksek performanslı kompresör çözümleri. 
+            Verimli ve güvenilir sistemler.
+          </p>
+          <a href="/category/endustriyel-kompresorler" class="text-primary font-semibold hover:underline flex items-center gap-2">
+            Daha Fazla
+            <span>→</span>
+          </a>
+        </div>
+        <div class="bg-white border border-gray-200 rounded-lg p-8 hover:shadow-xl transition-shadow">
+          <div class="text-5xl mb-6 text-primary">🏗️</div>
+          <h3 class="text-2xl font-bold mb-4">İnşaat & Mühendislik</h3>
+          <p class="text-gray-600 mb-6">
+            İnşaat sektörü için özel tasarlanmış kompresör ve hava sistemleri. 
+            Projelerinize güç katıyoruz.
+          </p>
+          <a href="/category/insaat-muhendislik" class="text-primary font-semibold hover:underline flex items-center gap-2">
+            Daha Fazla
+            <span>→</span>
+          </a>
+        </div>
+        <div class="bg-white border border-gray-200 rounded-lg p-8 hover:shadow-xl transition-shadow">
+          <div class="text-5xl mb-6 text-primary">🔧</div>
+          <h3 class="text-2xl font-bold mb-4">Otomotiv & Makine Mühendisliği</h3>
+          <p class="text-gray-600 mb-6">
+            Otomotiv ve makine endüstrisi için özel kompresör sistemleri. 
+            Teknik uzmanlık ve kalite garantisi.
+          </p>
+          <a href="/category/otomotiv-makine-muhendisligi" class="text-primary font-semibold hover:underline flex items-center gap-2">
+            Daha Fazla
+            <span>→</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Product Slider -->
+      <div class="mt-4 relative">
+        <div class="relative overflow-hidden rounded-2xl pb-6 pt-2">
+          <div id="product-slider" class="flex gap-6 transition-transform duration-500 ease-in-out py-4" style="scrollbar-width: none; -ms-overflow-style: none;">
+            <!-- Product Card 1 -->
+            <div class="flex-shrink-0 w-80 bg-white border border-gray-200 rounded-xl p-6 hover:shadow-xl transition-all duration-300 hover:-translate-y-1 overflow-hidden">
+              <div class="w-full h-48 bg-gray-100 rounded-lg mb-4 overflow-hidden">
+                <img 
+                  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ_g4Uw-A43yGpsPwFeNubOfSslFd2Xf4NwaA&s" 
+                  alt="Endüstriyel Kompresör" 
+                  class="w-full h-full object-cover"
+                />
+              </div>
+              <h3 class="text-xl font-bold mb-2">Endüstriyel Kompresör</h3>
+              <p class="text-gray-600 text-sm mb-4">Yüksek performanslı endüstriyel kompresör sistemleri</p>
+              <div class="flex items-center justify-between">
+                <span class="text-primary font-bold text-lg">₺15.000</span>
+                <a href="/products/1" class="text-primary hover:underline text-sm font-semibold">Detaylar →</a>
+              </div>
+            </div>
+            
+            <!-- Product Card 2 -->
+            <div class="flex-shrink-0 w-80 bg-white border border-gray-200 rounded-xl p-6 hover:shadow-xl transition-all duration-300 hover:-translate-y-1 overflow-hidden">
+              <div class="w-full h-48 bg-gray-100 rounded-lg mb-4 overflow-hidden">
+                <img 
+                  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSp8kPydSVrn4vey_Trh583QdENzIf8_UbfrA&s" 
+                  alt="İnşaat Kompresörü" 
+                  class="w-full h-full object-cover"
+                />
+              </div>
+              <h3 class="text-xl font-bold mb-2">İnşaat Kompresörü</h3>
+              <p class="text-gray-600 text-sm mb-4">İnşaat sektörü için özel tasarım kompresör</p>
+              <div class="flex items-center justify-between">
+                <span class="text-primary font-bold text-lg">₺12.500</span>
+                <a href="/products/2" class="text-primary hover:underline text-sm font-semibold">Detaylar →</a>
+              </div>
+            </div>
+            
+            <!-- Product Card 3 -->
+            <div class="flex-shrink-0 w-80 bg-white border border-gray-200 rounded-xl p-6 hover:shadow-xl transition-all duration-300 hover:-translate-y-1 overflow-hidden">
+              <div class="w-full h-48 bg-gray-100 rounded-lg mb-4 overflow-hidden">
+                <img 
+                  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ1zJUh-7GObMYK7hzSndq2C9cA-sVphPTQOg&s" 
+                  alt="Otomotiv Kompresörü" 
+                  class="w-full h-full object-cover"
+                />
+              </div>
+              <h3 class="text-xl font-bold mb-2">Otomotiv Kompresörü</h3>
+              <p class="text-gray-600 text-sm mb-4">Otomotiv endüstrisi için kompresör çözümleri</p>
+              <div class="flex items-center justify-between">
+                <span class="text-primary font-bold text-lg">₺18.000</span>
+                <a href="/products/3" class="text-primary hover:underline text-sm font-semibold">Detaylar →</a>
+              </div>
+            </div>
+            
+            <!-- Product Card 4 -->
+            <div class="flex-shrink-0 w-80 bg-white border border-gray-200 rounded-xl p-6 hover:shadow-xl transition-all duration-300 hover:-translate-y-1 overflow-hidden">
+              <div class="w-full h-48 bg-gray-100 rounded-lg mb-4 overflow-hidden">
+                <img 
+                  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRjtMbg5gSuAAsIlcRO6iF1dyEUhSy2z7TjLw&s" 
+                  alt="Yüksek Basınç Kompresörü" 
+                  class="w-full h-full object-cover"
+                />
+              </div>
+              <h3 class="text-xl font-bold mb-2">Yüksek Basınç Kompresörü</h3>
+              <p class="text-gray-600 text-sm mb-4">Yüksek basınç uygulamaları için özel sistem</p>
+              <div class="flex items-center justify-between">
+                <span class="text-primary font-bold text-lg">₺22.000</span>
+                <a href="/products/4" class="text-primary hover:underline text-sm font-semibold">Detaylar →</a>
+              </div>
+            </div>
+            
+            <!-- Product Card 5 -->
+            <div class="flex-shrink-0 w-80 bg-white border border-gray-200 rounded-xl p-6 hover:shadow-xl transition-all duration-300 hover:-translate-y-1 overflow-hidden">
+              <div class="w-full h-48 bg-gray-100 rounded-lg mb-4 overflow-hidden">
+                <img 
+                  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR3TTR3BEjmmciUIRG6_At-YYEjuty4Ulf7kg&s" 
+                  alt="Çevre Dostu Kompresör" 
+                  class="w-full h-full object-cover"
+                />
+              </div>
+              <h3 class="text-xl font-bold mb-2">Çevre Dostu Kompresör</h3>
+              <p class="text-gray-600 text-sm mb-4">Enerji verimli ve çevre dostu teknoloji</p>
+              <div class="flex items-center justify-between">
+                <span class="text-primary font-bold text-lg">₺20.000</span>
+                <a href="/products/5" class="text-primary hover:underline text-sm font-semibold">Detaylar →</a>
+              </div>
+            </div>
+          </div>
+          <!-- Product Slider Navigation -->
+          <button id="product-slider-prev" class="absolute left-0 top-1/2 -translate-y-1/2 bg-white hover:bg-gray-50 text-gray-900 w-12 h-12 rounded-full flex items-center justify-center shadow-lg border border-gray-200 transition-all z-10">
+            <span class="text-2xl">←</span>
+          </button>
+          <button id="product-slider-next" class="absolute right-0 top-1/2 -translate-y-1/2 bg-white hover:bg-gray-50 text-gray-900 w-12 h-12 rounded-full flex items-center justify-center shadow-lg border border-gray-200 transition-all z-10">
+            <span class="text-2xl">→</span>
+          </button>
+        </div>
+      </div>
+      
+      <div class="text-center mt-6">
+        <a href="/products" class="text-primary font-semibold hover:underline inline-flex items-center gap-2">
+          Tüm Hizmetleri Keşfet
+          <span>→</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section class="py-16 md:py-20 bg-gray-50">
+    <div class="container">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div>
+          <span class="text-primary font-semibold uppercase tracking-wide">Küresel Endüstrilerle Çalışıyoruz!</span>
+          <h2 class="text-4xl md:text-5xl font-bold mt-4 mb-6">
+            Endüstriyel Kompresör Çözümlerinde Lider
+          </h2>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
+            <div>
+              <p class="text-gray-700 leading-relaxed mb-4">
+                Güçlü yönlerimizi geliştirmek ve güçlü temel değerlerimizi korumak 
+                için kurumsal bir yönerge oluşturduk. Bu, felsefemizi yansıtıyor.
+              </p>
+              <p class="font-semibold text-primary">Mehmet Akin</p>
+            </div>
+            <div>
+              <p class="text-gray-700 leading-relaxed">
+                Kompresör Bayi olarak, uzun vadeli müşteri ilişkileri ve projeler 
+                inşa ediyoruz. Çoklu endüstrilerde deneyim ve uzmanlıkla hizmet vererek, 
+                dünyanın önde gelen kuruluşlarından biri olarak tanınıyoruz.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="bg-gray-200 rounded-lg aspect-square flex items-center justify-center">
+          <div class="text-center text-gray-500">
+            <div class="text-6xl mb-4">🔧</div>
+            <p class="text-lg">Kompresör Görseli</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section class="bg-primary py-16 md:py-24 relative overflow-hidden">
+    <!-- Background Pattern -->
+    <div class="absolute inset-0 opacity-10">
+      <div class="w-full h-full" style="background-image: radial-gradient(circle, white 1px, transparent 1px); background-size: 30px 30px;"></div>
+    </div>
+    <div class="container relative z-10">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+        <!-- Left Side: Features -->
+        <div>
+          <h2 class="text-3xl md:text-4xl font-bold text-white mb-8">Neden Bizi Seçmelisiniz?</h2>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
+            <div class="bg-white bg-opacity-10 backdrop-blur-sm rounded-xl p-4 hover:bg-opacity-20 transition-all duration-300 border border-white border-opacity-20 hover:border-opacity-40 hover:shadow-lg hover:-translate-y-1">
+              <div class="flex items-center gap-3">
+                <div class="flex-shrink-0 w-10 h-10 bg-white bg-opacity-20 rounded-lg flex items-center justify-center">
+                  <span class="text-xl font-bold text-white">✓</span>
+                </div>
+                <h3 class="font-semibold text-white">Kalite Kontrol Sistemi</h3>
+              </div>
+            </div>
+            <div class="bg-white bg-opacity-10 backdrop-blur-sm rounded-xl p-4 hover:bg-opacity-20 transition-all duration-300 border border-white border-opacity-20 hover:border-opacity-40 hover:shadow-lg hover:-translate-y-1">
+              <div class="flex items-center gap-3">
+                <div class="flex-shrink-0 w-10 h-10 bg-white bg-opacity-20 rounded-lg flex items-center justify-center">
+                  <span class="text-xl font-bold text-white">✓</span>
+                </div>
+                <h3 class="font-semibold text-white">%100 Müşteri Memnuniyeti</h3>
+              </div>
+            </div>
+            <div class="bg-white bg-opacity-10 backdrop-blur-sm rounded-xl p-4 hover:bg-opacity-20 transition-all duration-300 border border-white border-opacity-20 hover:border-opacity-40 hover:shadow-lg hover:-translate-y-1">
+              <div class="flex items-center gap-3">
+                <div class="flex-shrink-0 w-10 h-10 bg-white bg-opacity-20 rounded-lg flex items-center justify-center">
+                  <span class="text-xl font-bold text-white">✓</span>
+                </div>
+                <h3 class="font-semibold text-white">Profesyonel Ekip</h3>
+              </div>
+            </div>
+            <div class="bg-white bg-opacity-10 backdrop-blur-sm rounded-xl p-4 hover:bg-opacity-20 transition-all duration-300 border border-white border-opacity-20 hover:border-opacity-40 hover:shadow-lg hover:-translate-y-1">
+              <div class="flex items-center gap-3">
+                <div class="flex-shrink-0 w-10 h-10 bg-white bg-opacity-20 rounded-lg flex items-center justify-center">
+                  <span class="text-xl font-bold text-white">✓</span>
+                </div>
+                <h3 class="font-semibold text-white">Doğru Test Süreçleri</h3>
+              </div>
+            </div>
+            <div class="bg-white bg-opacity-10 backdrop-blur-sm rounded-xl p-4 hover:bg-opacity-20 transition-all duration-300 border border-white border-opacity-20 hover:border-opacity-40 hover:shadow-lg hover:-translate-y-1">
+              <div class="flex items-center gap-3">
+                <div class="flex-shrink-0 w-10 h-10 bg-white bg-opacity-20 rounded-lg flex items-center justify-center">
+                  <span class="text-xl font-bold text-white">✓</span>
+                </div>
+                <h3 class="font-semibold text-white">Eşsiz İşçilik</h3>
+              </div>
+            </div>
+            <div class="bg-white bg-opacity-10 backdrop-blur-sm rounded-xl p-4 hover:bg-opacity-20 transition-all duration-300 border border-white border-opacity-20 hover:border-opacity-40 hover:shadow-lg hover:-translate-y-1">
+              <div class="flex items-center gap-3">
+                <div class="flex-shrink-0 w-10 h-10 bg-white bg-opacity-20 rounded-lg flex items-center justify-center">
+                  <span class="text-xl font-bold text-white">✓</span>
+                </div>
+                <h3 class="font-semibold text-white">Uzman ve Nitelikli</h3>
+              </div>
+            </div>
+            <div class="bg-white bg-opacity-10 backdrop-blur-sm rounded-xl p-4 hover:bg-opacity-20 transition-all duration-300 border border-white border-opacity-20 hover:border-opacity-40 hover:shadow-lg hover:-translate-y-1">
+              <div class="flex items-center gap-3">
+                <div class="flex-shrink-0 w-10 h-10 bg-white bg-opacity-20 rounded-lg flex items-center justify-center">
+                  <span class="text-xl font-bold text-white">✓</span>
+                </div>
+                <h3 class="font-semibold text-white">Çevre Dostu</h3>
+              </div>
+            </div>
+            <div class="bg-white bg-opacity-10 backdrop-blur-sm rounded-xl p-4 hover:bg-opacity-20 transition-all duration-300 border border-white border-opacity-20 hover:border-opacity-40 hover:shadow-lg hover:-translate-y-1">
+              <div class="flex items-center gap-3">
+                <div class="flex-shrink-0 w-10 h-10 bg-white bg-opacity-20 rounded-lg flex items-center justify-center">
+                  <span class="text-xl font-bold text-white">✓</span>
+                </div>
+                <h3 class="font-semibold text-white">Kişiselleştirilmiş Çözümler</h3>
+              </div>
+            </div>
+          </div>
+          <div class="flex flex-col sm:flex-row gap-4">
+            <a href="/contact" class="bg-white text-primary hover:bg-gray-100 px-8 py-4 rounded-lg font-semibold transition-all duration-300 inline-flex items-center justify-center gap-2 shadow-lg hover:shadow-xl hover:-translate-y-0.5">
+              Randevu Al
+              <span>→</span>
+            </a>
+            <a href="/products" class="bg-transparent border-2 border-white text-white hover:bg-white hover:text-primary px-8 py-4 rounded-lg font-semibold transition-all duration-300 inline-flex items-center justify-center gap-2">
+              Tüm Özellikleri Keşfet
+              <span>→</span>
+            </a>
+          </div>
+        </div>
+        <!-- Right Side: Visual -->
+        <div class="relative">
+          <div class="bg-white bg-opacity-10 backdrop-blur-sm rounded-2xl aspect-square flex items-center justify-center p-8 border border-white border-opacity-20 shadow-2xl">
+            <div class="text-center text-white">
+              <div class="text-9xl mb-6 transform hover:scale-110 transition-transform duration-300">🔧</div>
+              <h3 class="text-2xl font-bold mb-2">Endüstriyel Kompresör</h3>
+              <p class="text-white text-opacity-80">Yüksek performanslı çözümler</p>
+            </div>
+          </div>
+          <!-- Decorative Elements -->
+          <div class="absolute -top-4 -right-4 w-24 h-24 bg-white bg-opacity-10 rounded-full blur-xl"></div>
+          <div class="absolute -bottom-4 -left-4 w-32 h-32 bg-white bg-opacity-10 rounded-full blur-xl"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects Section -->
+  <section class="py-16 md:py-20 bg-white">
+    <div class="container">
+      <div class="text-center mb-12">
+        <h2 class="text-4xl md:text-5xl font-bold mb-4">Projelerimiz</h2>
+        <p class="text-xl text-gray-600">Başarıyla tamamladığımız projeler</p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <Card 
+          title="Endüstriyel Kompresör Fabrikası"
+          description="Büyük ölçekli endüstriyel tesis için kompresör sistemleri kurulumu ve bakım hizmetleri."
+        />
+        <Card 
+          title="Otomotiv Üretim Tesisleri"
+          description="Otomotiv endüstrisi için özel tasarlanmış hava kompresör sistemleri ve teknik destek."
+        />
+        <Card 
+          title="İnşaat Projeleri"
+          description="İnşaat sektörü için portatif ve sabit kompresör çözümleri, proje bazlı danışmanlık hizmetleri."
+        />
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="relative bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 text-white py-20 md:py-32">
+    <div class="absolute inset-0 opacity-30">
+      <div class="w-full h-full bg-[url('data:image/svg+xml,%3Csvg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="none" fill-rule="evenodd"%3E%3Cg fill="%23ffffff" fill-opacity="0.05"%3E%3Cpath d="M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')]"></div>
+    </div>
+    <div class="container relative z-10">
+      <div class="max-w-4xl mx-auto text-center">
+        <h2 class="text-4xl md:text-5xl font-bold mb-6">
+          Uzun Vadeli Müşterilere Hizmet Veriyoruz
+        </h2>
+        <p class="text-xl text-gray-300 mb-8 leading-relaxed">
+          Dünya çapındaki varlığımız, zamanında teslimat, maliyet etkinliği ve uyumluluk 
+          gereksinimlerini sağlar. Çoklu endüstrilerde deneyim ve uzmanlıkla hizmet vererek, 
+          dünyanın önde gelen kuruluşlarından biri olarak tanınıyoruz!
+        </p>
+        <a href="/contact" class="inline-flex bg-primary hover:bg-primary-dark text-white px-8 py-4 rounded-lg font-semibold transition items-center justify-center gap-2 mx-auto">
+          Broşürümüzü İndirin
+          <span>→</span>
+        </a>
+        <div class="mt-12 bg-primary bg-opacity-20 rounded-lg p-8 max-w-2xl mx-auto border border-primary border-opacity-30">
+          <div class="mb-4 flex items-center justify-center">
+            <img 
+              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRhumiUndfenwMGDu1Q8nsGen3wJMDhTYwhzQ&s" 
+              alt="Testimonial" 
+              class="h-24 w-24 rounded-full object-cover"
+            />
+          </div>
+          <p class="text-lg md:text-xl italic mb-4">
+            "Geleceğe yön veriyorsunuz; geçmiş başarılarınızın üzerine inşa etmenize 
+            ve harika geleceğinize hazırlanmanıza yardımcı olabiliriz."
+          </p>
+          <p class="font-semibold">— Kompresör Bayi Müşterisi</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <style>
+    .logo-slider {
+      animation: scroll 30s linear infinite;
+      width: fit-content;
+    }
+
+    @keyframes scroll {
+      0% {
+        transform: translateX(0);
+      }
+      100% {
+        transform: translateX(-50%);
+      }
+    }
+
+    .logo-slider:hover {
+      animation-play-state: paused;
+    }
+  </style>
+
+  <script>
+    // Image Slider
+    let currentImageSlide = 0;
+    const imageSlider = document.getElementById('image-slider');
+    const imageDots = document.querySelectorAll('.image-slider-dot');
+    const totalImageSlides = 3;
+
+    function updateImageSlider() {
+      if (imageSlider) {
+        imageSlider.style.transform = `translateX(-${currentImageSlide * 100}%)`;
+        imageDots.forEach((dot, index) => {
+          if (index === currentImageSlide) {
+            dot.classList.remove('bg-white/40');
+            dot.classList.add('bg-white/80');
+          } else {
+            dot.classList.remove('bg-white/80');
+            dot.classList.add('bg-white/40');
+          }
+        });
+      }
+    }
+
+    document.getElementById('image-slider-next')?.addEventListener('click', () => {
+      currentImageSlide = (currentImageSlide + 1) % totalImageSlides;
+      updateImageSlider();
+    });
+
+    document.getElementById('image-slider-prev')?.addEventListener('click', () => {
+      currentImageSlide = (currentImageSlide - 1 + totalImageSlides) % totalImageSlides;
+      updateImageSlider();
+    });
+
+    imageDots.forEach((dot, index) => {
+      dot.addEventListener('click', () => {
+        currentImageSlide = index;
+        updateImageSlider();
+      });
+    });
+
+    // Auto-play image slider
+    setInterval(() => {
+      currentImageSlide = (currentImageSlide + 1) % totalImageSlides;
+      updateImageSlider();
+    }, 5000);
+
+    // Product Slider
+    let currentProductSlide = 0;
+    const productSlider = document.getElementById('product-slider');
+    const productCards = productSlider?.children;
+    const cardWidth = 320; // w-80 = 320px
+    const gap = 24; // gap-6 = 24px
+
+    function getVisibleCards() {
+      return Math.floor((window.innerWidth - 64) / (cardWidth + gap)); // -64 for padding
+    }
+
+    function getMaxSlide() {
+      if (!productCards) return 0;
+      const visible = getVisibleCards();
+      return Math.max(0, productCards.length - visible);
+    }
+
+    function updateProductSlider() {
+      if (productSlider) {
+        const translateX = currentProductSlide * (cardWidth + gap);
+        productSlider.style.transform = `translateX(-${translateX}px)`;
+      }
+    }
+
+    document.getElementById('product-slider-next')?.addEventListener('click', () => {
+      const maxSlide = getMaxSlide();
+      if (currentProductSlide < maxSlide) {
+        currentProductSlide++;
+        updateProductSlider();
+      }
+    });
+
+    document.getElementById('product-slider-prev')?.addEventListener('click', () => {
+      if (currentProductSlide > 0) {
+        currentProductSlide--;
+        updateProductSlider();
+      }
+    });
+
+    // Update on window resize
+    window.addEventListener('resize', () => {
+      const maxSlide = getMaxSlide();
+      if (currentProductSlide > maxSlide) {
+        currentProductSlide = maxSlide;
+      }
+      updateProductSlider();
+    });
+  </script>
 </Layout>

@@ -4,23 +4,33 @@ interface Props {
   description?: string;
   image?: string;
   imageAlt?: string;
+  category?: string;
 }
 
-const { title, description, image, imageAlt = title } = Astro.props;
+const { title, description, image, imageAlt = title, category } = Astro.props;
 ---
 
-<div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
-  {image && (
+<div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow">
+  {image ? (
     <img
       src={image}
       alt={imageAlt}
       class="w-full h-48 object-cover"
     />
+  ) : (
+    <div class="w-full h-48 bg-gradient-to-br from-gray-200 to-gray-300 flex items-center justify-center">
+      <div class="text-center text-gray-500">
+        <div class="text-5xl mb-2">🔧</div>
+      </div>
+    </div>
   )}
   <div class="p-6">
-    <h3 class="text-xl font-semibold mb-2">{title}</h3>
+    {category && (
+      <p class="text-primary text-sm font-semibold mb-2 uppercase">{category}</p>
+    )}
+    <h3 class="text-xl font-bold mb-3">{title}</h3>
     {description && (
-      <p class="text-gray-600">{description}</p>
+      <p class="text-gray-600 leading-relaxed">{description}</p>
     )}
   </div>
 </div>

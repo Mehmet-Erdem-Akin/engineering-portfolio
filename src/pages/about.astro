@@ -3,10 +3,199 @@ import Layout from '../layouts/Layout.astro';
 ---
 
 <Layout title="Hakkımızda" description="Hakkımızda sayfası">
-  <main class="container mx-auto px-4 py-8">
-    <h1 class="text-4xl font-bold mb-6">Hakkımızda</h1>
-    <p class="text-lg text-gray-700">
-      Bu sayfa hakkımızda bilgileri içerir.
-    </p>
-  </main>
+  <!-- Hero Section -->
+  <section class="relative bg-gray-900 text-white py-16 md:py-24">
+    <div class="container relative z-10">
+      <div class="max-w-3xl mx-auto text-center">
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">Hakkımızda</h1>
+        <p class="text-lg md:text-xl text-gray-400 mb-8 leading-relaxed">
+          Endüstriyel kompresör çözümlerinde lider firma olarak, yılların deneyimi ve uzman kadromuzla 
+          sektörde öncü bir konumdayız.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section class="py-16 md:py-20 bg-white">
+    <div class="container">
+      <div class="max-w-4xl mx-auto">
+        <div class="text-center mb-12">
+          <span class="text-primary font-semibold uppercase tracking-wide">Hikayemiz</span>
+          <h2 class="text-3xl md:text-4xl font-bold mt-4 mb-6">Endüstriyel Kompresör Çözümlerinde Lider</h2>
+        </div>
+
+        <div class="prose prose-lg max-w-none">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+            <div>
+              <p class="text-gray-700 leading-relaxed mb-4">
+                Güçlü yönlerimizi geliştirmek ve güçlü temel değerlerimizi korumak 
+                için kurumsal bir yönerge oluşturduk. Bu, felsefemizi yansıtıyor 
+                ve müşterilerimize en iyi hizmeti sunma taahhüdümüzü gösteriyor.
+              </p>
+              <p class="font-semibold text-primary">Mehmet Akin</p>
+              <p class="text-sm text-gray-600">Kurucu & CEO</p>
+            </div>
+            <div>
+              <p class="text-gray-700 leading-relaxed">
+                Kompresör Bayi olarak, uzun vadeli müşteri ilişkileri ve projeler 
+                inşa ediyoruz. Çoklu endüstrilerde deneyim ve uzmanlıkla hizmet vererek, 
+                dünyanın önde gelen kuruluşlarından biri olarak tanınıyoruz.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Values Section -->
+  <section class="py-16 md:py-20 bg-gray-50">
+    <div class="container">
+      <div class="text-center mb-12">
+        <span class="text-primary font-semibold uppercase tracking-wide">Değerlerimiz</span>
+        <h2 class="text-3xl md:text-4xl font-bold mt-4 mb-6">Neyi Önemsiyoruz?</h2>
+        <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+          İş yapış şeklimizi şekillendiren temel değerler ve prensiplerimiz
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <!-- Value 1 -->
+        <div class="bg-white rounded-lg p-8 shadow-md hover:shadow-xl transition-shadow">
+          <div class="w-16 h-16 bg-primary rounded-lg flex items-center justify-center mb-6">
+            <span class="text-white text-3xl">✓</span>
+          </div>
+          <h3 class="text-xl font-bold mb-4 text-gray-900">Kalite</h3>
+          <p class="text-gray-600 leading-relaxed">
+            Her projede en yüksek kalite standartlarını uyguluyor, müşterilerimize 
+            güvenilir ve dayanıklı çözümler sunuyoruz.
+          </p>
+        </div>
+
+        <!-- Value 2 -->
+        <div class="bg-white rounded-lg p-8 shadow-md hover:shadow-xl transition-shadow">
+          <div class="w-16 h-16 bg-primary rounded-lg flex items-center justify-center mb-6">
+            <span class="text-white text-3xl">🎯</span>
+          </div>
+          <h3 class="text-xl font-bold mb-4 text-gray-900">Müşteri Odaklılık</h3>
+          <p class="text-gray-600 leading-relaxed">
+            Müşterilerimizin ihtiyaçlarını anlamak ve onlara özel çözümler geliştirmek 
+            en önemli önceliğimizdir.
+          </p>
+        </div>
+
+        <!-- Value 3 -->
+        <div class="bg-white rounded-lg p-8 shadow-md hover:shadow-xl transition-shadow">
+          <div class="w-16 h-16 bg-primary rounded-lg flex items-center justify-center mb-6">
+            <span class="text-white text-3xl">🚀</span>
+          </div>
+          <h3 class="text-xl font-bold mb-4 text-gray-900">İnovasyon</h3>
+          <p class="text-gray-600 leading-relaxed">
+            Sektördeki son gelişmeleri takip ediyor, yenilikçi teknolojileri 
+            projelerimize entegre ediyoruz.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Statistics Section -->
+  <section class="py-16 md:py-20 bg-white">
+    <div class="container">
+      <div class="text-center mb-12">
+        <span class="text-primary font-semibold uppercase tracking-wide">Rakamlarla</span>
+        <h2 class="text-3xl md:text-4xl font-bold mt-4 mb-6">Başarılarımız</h2>
+      </div>
+
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+        <!-- Stat 1 -->
+        <div class="text-center">
+          <div class="text-5xl md:text-6xl font-bold text-primary mb-4">20+</div>
+          <div class="text-lg font-semibold text-gray-900 mb-2">Piyasada Yıl</div>
+          <div class="text-gray-600">Deneyim ve Güven</div>
+        </div>
+
+        <!-- Stat 2 -->
+        <div class="text-center">
+          <div class="text-5xl md:text-6xl font-bold text-primary mb-4">200+</div>
+          <div class="text-lg font-semibold text-gray-900 mb-2">Tamamlanan Proje</div>
+          <div class="text-gray-600">Başarılı Teslimat</div>
+        </div>
+
+        <!-- Stat 3 -->
+        <div class="text-center">
+          <div class="text-5xl md:text-6xl font-bold text-primary mb-4">15</div>
+          <div class="text-lg font-semibold text-gray-900 mb-2">Dünya Çapında Ofis</div>
+          <div class="text-gray-600">Küresel Varlık</div>
+        </div>
+
+        <!-- Stat 4 -->
+        <div class="text-center">
+          <div class="text-5xl md:text-6xl font-bold text-primary mb-4">500+</div>
+          <div class="text-lg font-semibold text-gray-900 mb-2">Mutlu Müşteri</div>
+          <div class="text-gray-600">Memnuniyet Garantisi</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Mission & Vision Section -->
+  <section class="py-16 md:py-20 bg-primary text-white">
+    <div class="container">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+        <!-- Mission -->
+        <div>
+          <h2 class="text-3xl md:text-4xl font-bold mb-6">Misyonumuz</h2>
+          <p class="text-lg text-white/90 leading-relaxed mb-6">
+            Endüstriyel kompresör sektöründe en yüksek kalite standartlarını 
+            sunarak, müşterilerimizin işlerini büyütmelerine ve verimliliklerini 
+            artırmalarına yardımcı olmak.
+          </p>
+          <p class="text-lg text-white/90 leading-relaxed">
+            Güvenilir, yenilikçi ve sürdürülebilir çözümlerle sektörde lider 
+            konumumuzu koruyarak, müşteri memnuniyetini en üst seviyede tutmak.
+          </p>
+        </div>
+
+        <!-- Vision -->
+        <div>
+          <h2 class="text-3xl md:text-4xl font-bold mb-6">Vizyonumuz</h2>
+          <p class="text-lg text-white/90 leading-relaxed mb-6">
+            Türkiye'nin ve dünyanın önde gelen endüstriyel kompresör çözümleri 
+            sağlayıcısı olmak, teknolojik yeniliklerle sektörü şekillendirmek.
+          </p>
+          <p class="text-lg text-white/90 leading-relaxed">
+            Çevre dostu ve enerji verimli sistemlerle sürdürülebilir bir gelecek 
+            inşa etmek, müşterilerimize uzun vadeli değer yaratmak.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="py-16 md:py-20 bg-white">
+    <div class="container">
+      <div class="max-w-4xl mx-auto text-center bg-gray-50 rounded-2xl p-12">
+        <h2 class="text-3xl md:text-4xl font-bold mb-6 text-gray-900">
+          Bizimle Çalışmak İster misiniz?
+        </h2>
+        <p class="text-lg text-gray-600 mb-8 leading-relaxed">
+          Projeleriniz için en iyi çözümleri sunmak için buradayız. 
+          Hemen iletişime geçin ve teklif alın.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a href="/contact" class="inline-flex bg-primary hover:bg-primary-dark text-white px-8 py-4 rounded-lg font-semibold transition items-center justify-center gap-2">
+            İletişime Geçin
+            <span>→</span>
+          </a>
+          <a href="/products" class="inline-flex border-2 border-primary text-primary hover:bg-primary hover:text-white px-8 py-4 rounded-lg font-semibold transition items-center justify-center gap-2">
+            Hizmetlerimizi İnceleyin
+            <span>→</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
 </Layout>

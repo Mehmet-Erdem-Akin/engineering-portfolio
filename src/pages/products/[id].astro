@@ -1,0 +1,134 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+// Ürün bilgileri (gerçek uygulamada API'den veya database'den gelecek)
+const products: Record<string, { title: string; price: number; description: string; fullDescription: string; image: string; category: string }> = {
+  '1': {
+    title: 'Endüstriyel Kompresör',
+    price: 15000,
+    description: 'Yüksek performanslı endüstriyel kompresör sistemleri',
+    fullDescription: 'Bu endüstriyel kompresör, büyük ölçekli üretim tesisleri için tasarlanmış yüksek performanslı bir sistemdir. Enerji verimli motoru ve gelişmiş kontrol sistemi ile uzun ömürlü ve güvenilir bir çözüm sunar.',
+    image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ_g4Uw-A43yGpsPwFeNubOfSslFd2Xf4NwaA&s',
+    category: 'Endüstriyel Kompresörler'
+  },
+  '2': {
+    title: 'İnşaat Kompresörü',
+    price: 12500,
+    description: 'İnşaat sektörü için özel tasarım kompresör',
+    fullDescription: 'İnşaat sahaları için özel olarak tasarlanmış portatif kompresör. Dayanıklı yapısı ve kolay taşınabilirliği ile inşaat projelerinizde güvenilir bir çözüm.',
+    image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSp8kPydSVrn4vey_Trh583QdENzIf8_UbfrA&s',
+    category: 'İnşaat Kompresörleri'
+  },
+  '3': {
+    title: 'Otomotiv Kompresörü',
+    price: 18000,
+    description: 'Otomotiv endüstrisi için kompresör çözümleri',
+    fullDescription: 'Otomotiv endüstrisinde kullanılmak üzere özel olarak geliştirilmiş kompresör sistemi. Yüksek basınç kapasitesi ve hassas kontrol özellikleri ile otomotiv üretim hatlarında mükemmel performans sağlar.',
+    image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ1zJUh-7GObMYK7hzSndq2C9cA-sVphPTQOg&s',
+    category: 'Otomotiv Kompresörleri'
+  },
+  '4': {
+    title: 'Yüksek Basınç Kompresörü',
+    price: 22000,
+    description: 'Yüksek basınç uygulamaları için özel sistem',
+    fullDescription: 'Yüksek basınç gerektiren endüstriyel uygulamalar için tasarlanmış özel kompresör. Gelişmiş güvenlik özellikleri ve yüksek performans ile kritik uygulamalarda güvenle kullanılabilir.',
+    image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRjtMbg5gSuAAsIlcRO6iF1dyEUhSy2z7TjLw&s',
+    category: 'Yüksek Basınç Kompresörleri'
+  },
+  '5': {
+    title: 'Çevre Dostu Kompresör',
+    price: 20000,
+    description: 'Enerji verimli ve çevre dostu teknoloji',
+    fullDescription: 'Çevre dostu teknoloji ile üretilmiş enerji verimli kompresör. Düşük karbon ayak izi ve optimize edilmiş enerji tüketimi ile sürdürülebilir bir çözüm sunar.',
+    image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR3TTR3BEjmmciUIRG6_At-YYEjuty4Ulf7kg&s',
+    category: 'Çevre Dostu Kompresörler'
+  },
+  '6': {
+    title: 'Portatif Kompresör',
+    price: 9500,
+    description: 'Taşınabilir ve hafif tasarım',
+    fullDescription: 'Hafif ve kompakt tasarımı ile kolay taşınabilir portatif kompresör. Küçük işletmeler ve mobil uygulamalar için ideal bir çözüm.',
+    image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ_g4Uw-A43yGpsPwFeNubOfSslFd2Xf4NwaA&s',
+    category: 'Endüstriyel Kompresörler'
+  }
+};
+
+export async function getStaticPaths() {
+  const productIds = ['1', '2', '3', '4', '5', '6'];
+  return productIds.map((id) => ({
+    params: { id },
+    props: { id }
+  }));
+}
+
+interface Props {
+  id: string;
+}
+
+const { id } = Astro.props;
+const product = products[id] || products['1'];
+---
+
+<Layout title={`${product.title} - Kompresör Bayi`}>
+  <!-- Product Detail Section -->
+  <section class="py-16 md:py-24 bg-gray-50">
+    <div class="container">
+      <div class="mb-6">
+        <a href="/products" class="text-primary hover:underline inline-flex items-center gap-2">
+          ← Ürünlere Dön
+        </a>
+      </div>
+      
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+        <!-- Product Image -->
+        <div class="bg-white rounded-xl shadow-md overflow-hidden">
+          <img 
+            src={product.image} 
+            alt={product.title} 
+            class="w-full h-auto object-cover"
+          />
+        </div>
+        
+        <!-- Product Info -->
+        <div class="bg-white rounded-xl shadow-md p-8">
+          <span class="text-primary text-sm font-semibold uppercase mb-4 block">{product.category}</span>
+          <h1 class="text-4xl md:text-5xl font-bold mb-4 text-gray-900">{product.title}</h1>
+          <div class="text-4xl font-bold text-primary mb-6">₺{product.price.toLocaleString('tr-TR')}</div>
+          
+          <div class="border-t border-b border-gray-200 py-6 mb-6">
+            <h2 class="text-xl font-bold mb-4">Ürün Açıklaması</h2>
+            <p class="text-gray-600 leading-relaxed">{product.fullDescription}</p>
+          </div>
+
+          <div class="space-y-4 mb-8">
+            <div class="flex items-start gap-3">
+              <span class="text-primary text-xl">✓</span>
+              <span class="text-gray-700">Yüksek performans ve güvenilirlik</span>
+            </div>
+            <div class="flex items-start gap-3">
+              <span class="text-primary text-xl">✓</span>
+              <span class="text-gray-700">Enerji verimli teknoloji</span>
+            </div>
+            <div class="flex items-start gap-3">
+              <span class="text-primary text-xl">✓</span>
+              <span class="text-gray-700">2 yıl garanti</span>
+            </div>
+            <div class="flex items-start gap-3">
+              <span class="text-primary text-xl">✓</span>
+              <span class="text-gray-700">Ücretsiz teknik destek</span>
+            </div>
+          </div>
+
+          <div class="flex flex-col sm:flex-row gap-4">
+            <a href="/contact" class="bg-primary text-white px-8 py-4 rounded-lg font-semibold hover:bg-primary-dark transition text-center">
+              Teklif Al
+            </a>
+            <a href="/contact" class="bg-transparent border-2 border-primary text-primary px-8 py-4 rounded-lg font-semibold hover:bg-primary hover:text-white transition text-center">
+              İletişime Geç
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>

@@ -1,0 +1,101 @@
+---
+---
+
+<header class="bg-gray-900">
+  <div class="container">
+    <nav class="py-4">
+    <div class="flex items-center justify-between">
+      <!-- Logo -->
+      <a href="/" class="flex items-center gap-2 text-white">
+        <span class="text-primary text-2xl">🏠</span>
+        <span class="text-xl font-bold">Kompresör Bayi</span>
+      </a>
+      <!-- Desktop Navigation Menu -->
+      <ul class="hidden md:flex space-x-8 items-center">
+        <li><a href="/" class="text-primary font-medium">Ana Sayfa</a></li>
+        <li><a href="/about" class="text-white hover:text-primary transition">Hakkımızda</a></li>
+        <li><a href="/products" class="text-white hover:text-primary transition">Projeler</a></li>
+        <li><a href="/products" class="text-white hover:text-primary transition">Ürünler</a></li>
+      </ul>
+      <!-- Desktop Contact Button -->
+      <div class="hidden md:flex items-center">
+        <a href="/contact" class="bg-primary text-white px-6 py-2.5 rounded-lg hover:bg-primary-dark transition">
+          İletişim
+        </a>
+      </div>
+      <!-- Mobile Menu Button -->
+      <button id="mobile-menu-button" class="md:hidden text-white p-2 hover:bg-gray-800 rounded-lg transition">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+        </svg>
+      </button>
+    </div>
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="hidden md:hidden mt-4 pb-4">
+      <ul class="flex flex-col space-y-4">
+        <li>
+          <a href="/" class="block text-primary font-medium py-2 px-4 hover:bg-gray-800 rounded-lg transition">
+            Ana Sayfa
+          </a>
+        </li>
+        <li>
+          <a href="/about" class="block text-white py-2 px-4 hover:bg-gray-800 rounded-lg transition">
+            Hakkımızda
+          </a>
+        </li>
+        <li>
+          <a href="/products" class="block text-white py-2 px-4 hover:bg-gray-800 rounded-lg transition">
+            Projeler
+          </a>
+        </li>
+        <li>
+          <a href="/products" class="block text-white py-2 px-4 hover:bg-gray-800 rounded-lg transition">
+            Ürünler
+          </a>
+        </li>
+        <li>
+          <a href="/contact" class="block bg-primary text-white py-2.5 px-4 rounded-lg hover:bg-primary-dark transition text-center">
+            İletişim
+          </a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  </div>
+</header>
+
+<script>
+  const mobileMenuButton = document.getElementById('mobile-menu-button');
+  const mobileMenu = document.getElementById('mobile-menu');
+  const svgPath = mobileMenuButton?.querySelector('svg path');
+
+  mobileMenuButton?.addEventListener('click', () => {
+    mobileMenu?.classList.toggle('hidden');
+    
+    // Toggle hamburger icon to X
+    if (mobileMenu?.classList.contains('hidden')) {
+      // Show hamburger icon
+      if (svgPath) {
+        svgPath.setAttribute('d', 'M4 6h16M4 12h16M4 18h16');
+      }
+    } else {
+      // Show X icon
+      if (svgPath) {
+        svgPath.setAttribute('d', 'M6 18L18 6M6 6l12 12');
+      }
+    }
+  });
+
+  // Close menu when clicking outside
+  document.addEventListener('click', (e: Event) => {
+    const target = e.target as Node;
+    if (mobileMenu && mobileMenuButton && 
+        !mobileMenu.contains(target) && 
+        !mobileMenuButton.contains(target)) {
+      mobileMenu.classList.add('hidden');
+      if (svgPath) {
+        svgPath.setAttribute('d', 'M4 6h16M4 12h16M4 18h16');
+      }
+    }
+  });
+</script>

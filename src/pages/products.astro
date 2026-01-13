@@ -2,11 +2,456 @@
 import Layout from '../layouts/Layout.astro';
 ---
 
-<Layout title="Ürünler" description="Ürünler sayfası">
-  <main class="container mx-auto px-4 py-8">
-    <h1 class="text-4xl font-bold mb-6">Ürünler</h1>
-    <p class="text-lg text-gray-700">
-      Ürünlerimiz burada listelenecek.
-    </p>
-  </main>
+<Layout title="Ürünler - Kompresör Bayi">
+  <!-- Header Section -->
+  <section class="bg-gray-900 text-white py-16 md:py-24">
+    <div class="container">
+      <div class="text-center">
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-4">
+          Ürünlerimiz
+        </h1>
+        <p class="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto">
+          Endüstriyel kompresör çözümlerimizle ihtiyaçlarınıza uygun en iyi ürünleri keşfedin
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Products Section -->
+  <section class="py-16 md:py-20 bg-gray-50">
+    <div class="container">
+      <div class="grid grid-cols-1 lg:grid-cols-4 gap-8">
+        <!-- Sidebar Filter -->
+        <aside class="lg:col-span-1">
+          <div class="bg-white rounded-xl shadow-md p-6 sticky top-4">
+            <h2 class="text-2xl font-bold mb-6 text-gray-900">Filtrele</h2>
+            
+            <!-- Category Filter -->
+            <div class="mb-8">
+              <h3 class="text-lg font-semibold mb-4 text-gray-900">Kategori</h3>
+              <div class="space-y-2">
+                <label class="flex items-center cursor-pointer">
+                  <input type="checkbox" id="category-all" class="w-4 h-4 accent-primary rounded focus:ring-primary" checked>
+                  <span class="ml-3 text-gray-700">Tümü</span>
+                </label>
+                <label class="flex items-center cursor-pointer">
+                  <input type="checkbox" class="category-checkbox w-4 h-4 accent-primary rounded focus:ring-primary" value="Endüstriyel Kompresörler">
+                  <span class="ml-3 text-gray-700">Endüstriyel Kompresörler</span>
+                </label>
+                <label class="flex items-center cursor-pointer">
+                  <input type="checkbox" class="category-checkbox w-4 h-4 accent-primary rounded focus:ring-primary" value="İnşaat Kompresörleri">
+                  <span class="ml-3 text-gray-700">İnşaat Kompresörleri</span>
+                </label>
+                <label class="flex items-center cursor-pointer">
+                  <input type="checkbox" class="category-checkbox w-4 h-4 accent-primary rounded focus:ring-primary" value="Otomotiv Kompresörleri">
+                  <span class="ml-3 text-gray-700">Otomotiv Kompresörleri</span>
+                </label>
+                <label class="flex items-center cursor-pointer">
+                  <input type="checkbox" class="category-checkbox w-4 h-4 accent-primary rounded focus:ring-primary" value="Yüksek Basınç Kompresörleri">
+                  <span class="ml-3 text-gray-700">Yüksek Basınç Kompresörleri</span>
+                </label>
+                <label class="flex items-center cursor-pointer">
+                  <input type="checkbox" class="category-checkbox w-4 h-4 accent-primary rounded focus:ring-primary" value="Çevre Dostu Kompresörler">
+                  <span class="ml-3 text-gray-700">Çevre Dostu Kompresörler</span>
+                </label>
+              </div>
+            </div>
+
+            <!-- Price Filter -->
+            <div class="mb-8">
+              <h3 class="text-lg font-semibold mb-4 text-gray-900">Fiyat Aralığı</h3>
+              <div class="space-y-2">
+                <label class="flex items-center cursor-pointer">
+                  <input type="radio" name="price" class="price-radio w-4 h-4 accent-primary focus:ring-primary" value="all" checked>
+                  <span class="ml-3 text-gray-700">Tümü</span>
+                </label>
+                <label class="flex items-center cursor-pointer">
+                  <input type="radio" name="price" class="price-radio w-4 h-4 accent-primary focus:ring-primary" value="0-10000">
+                  <span class="ml-3 text-gray-700">₺0 - ₺10.000</span>
+                </label>
+                <label class="flex items-center cursor-pointer">
+                  <input type="radio" name="price" class="price-radio w-4 h-4 accent-primary focus:ring-primary" value="10000-20000">
+                  <span class="ml-3 text-gray-700">₺10.000 - ₺20.000</span>
+                </label>
+                <label class="flex items-center cursor-pointer">
+                  <input type="radio" name="price" class="price-radio w-4 h-4 accent-primary focus:ring-primary" value="20000-30000">
+                  <span class="ml-3 text-gray-700">₺20.000 - ₺30.000</span>
+                </label>
+                <label class="flex items-center cursor-pointer">
+                  <input type="radio" name="price" class="price-radio w-4 h-4 accent-primary focus:ring-primary" value="30000+">
+                  <span class="ml-3 text-gray-700">₺30.000+</span>
+                </label>
+              </div>
+            </div>
+
+            <!-- Reset Button -->
+            <button id="reset-filters" class="w-full bg-primary text-white py-3 rounded-lg font-semibold hover:bg-primary-dark transition">
+              Filtreleri Temizle
+            </button>
+          </div>
+        </aside>
+
+        <!-- Products Grid -->
+        <div class="lg:col-span-3">
+          <!-- Sort & View Options -->
+          <div class="bg-white rounded-xl shadow-md p-4 mb-6 flex flex-col sm:flex-row justify-between items-center gap-4">
+            <div class="text-gray-600">
+              <span class="font-semibold product-count">6</span> ürün bulundu
+            </div>
+            <div class="flex items-center gap-4">
+              <select id="sort-select" class="border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-primary">
+                <option value="default">Sıralama: Varsayılan</option>
+                <option value="price-asc">Fiyat: Düşükten Yükseğe</option>
+                <option value="price-desc">Fiyat: Yüksekten Düşüğe</option>
+                <option value="name-asc">İsim: A-Z</option>
+                <option value="name-desc">İsim: Z-A</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Products Grid -->
+          <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6" id="products-container">
+            <!-- Product Card 1 -->
+            <div class="product-card bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-all duration-300 hover:-translate-y-1" data-category="Endüstriyel Kompresörler" data-price="15000">
+              <div class="w-full h-48 bg-gray-100 overflow-hidden">
+                <img 
+                  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ_g4Uw-A43yGpsPwFeNubOfSslFd2Xf4NwaA&s" 
+                  alt="Endüstriyel Kompresör" 
+                  class="w-full h-full object-cover"
+                />
+              </div>
+              <div class="p-6">
+                <span class="text-primary text-sm font-semibold uppercase mb-2 block">Endüstriyel</span>
+                <h3 class="text-xl font-bold mb-2 text-gray-900">Endüstriyel Kompresör</h3>
+                <p class="text-gray-600 text-sm mb-4">Yüksek performanslı endüstriyel kompresör sistemleri</p>
+                <div class="flex items-center justify-between">
+                  <span class="text-primary font-bold text-xl">₺15.000</span>
+                  <a href="/products/1" class="bg-primary text-white px-4 py-2 rounded-lg hover:bg-primary-dark transition text-sm font-semibold">
+                    Detaylar
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Product Card 2 -->
+            <div class="product-card bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-all duration-300 hover:-translate-y-1" data-category="İnşaat Kompresörleri" data-price="12500">
+              <div class="w-full h-48 bg-gray-100 overflow-hidden">
+                <img 
+                  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSp8kPydSVrn4vey_Trh583QdENzIf8_UbfrA&s" 
+                  alt="İnşaat Kompresörü" 
+                  class="w-full h-full object-cover"
+                />
+              </div>
+              <div class="p-6">
+                <span class="text-primary text-sm font-semibold uppercase mb-2 block">İnşaat</span>
+                <h3 class="text-xl font-bold mb-2 text-gray-900">İnşaat Kompresörü</h3>
+                <p class="text-gray-600 text-sm mb-4">İnşaat sektörü için özel tasarım kompresör</p>
+                <div class="flex items-center justify-between">
+                  <span class="text-primary font-bold text-xl">₺12.500</span>
+                  <a href="/products/2" class="bg-primary text-white px-4 py-2 rounded-lg hover:bg-primary-dark transition text-sm font-semibold">
+                    Detaylar
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Product Card 3 -->
+            <div class="product-card bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-all duration-300 hover:-translate-y-1" data-category="Otomotiv Kompresörleri" data-price="18000">
+              <div class="w-full h-48 bg-gray-100 overflow-hidden">
+                <img 
+                  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ1zJUh-7GObMYK7hzSndq2C9cA-sVphPTQOg&s" 
+                  alt="Otomotiv Kompresörü" 
+                  class="w-full h-full object-cover"
+                />
+              </div>
+              <div class="p-6">
+                <span class="text-primary text-sm font-semibold uppercase mb-2 block">Otomotiv</span>
+                <h3 class="text-xl font-bold mb-2 text-gray-900">Otomotiv Kompresörü</h3>
+                <p class="text-gray-600 text-sm mb-4">Otomotiv endüstrisi için kompresör çözümleri</p>
+                <div class="flex items-center justify-between">
+                  <span class="text-primary font-bold text-xl">₺18.000</span>
+                  <a href="/products/3" class="bg-primary text-white px-4 py-2 rounded-lg hover:bg-primary-dark transition text-sm font-semibold">
+                    Detaylar
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Product Card 4 -->
+            <div class="product-card bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-all duration-300 hover:-translate-y-1" data-category="Yüksek Basınç Kompresörleri" data-price="22000">
+              <div class="w-full h-48 bg-gray-100 overflow-hidden">
+                <img 
+                  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRjtMbg5gSuAAsIlcRO6iF1dyEUhSy2z7TjLw&s" 
+                  alt="Yüksek Basınç Kompresörü" 
+                  class="w-full h-full object-cover"
+                />
+              </div>
+              <div class="p-6">
+                <span class="text-primary text-sm font-semibold uppercase mb-2 block">Yüksek Basınç</span>
+                <h3 class="text-xl font-bold mb-2 text-gray-900">Yüksek Basınç Kompresörü</h3>
+                <p class="text-gray-600 text-sm mb-4">Yüksek basınç uygulamaları için özel sistem</p>
+                <div class="flex items-center justify-between">
+                  <span class="text-primary font-bold text-xl">₺22.000</span>
+                  <a href="/products/4" class="bg-primary text-white px-4 py-2 rounded-lg hover:bg-primary-dark transition text-sm font-semibold">
+                    Detaylar
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Product Card 5 -->
+            <div class="product-card bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-all duration-300 hover:-translate-y-1" data-category="Çevre Dostu Kompresörler" data-price="20000">
+              <div class="w-full h-48 bg-gray-100 overflow-hidden">
+                <img 
+                  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR3TTR3BEjmmciUIRG6_At-YYEjuty4Ulf7kg&s" 
+                  alt="Çevre Dostu Kompresör" 
+                  class="w-full h-full object-cover"
+                />
+              </div>
+              <div class="p-6">
+                <span class="text-primary text-sm font-semibold uppercase mb-2 block">Çevre Dostu</span>
+                <h3 class="text-xl font-bold mb-2 text-gray-900">Çevre Dostu Kompresör</h3>
+                <p class="text-gray-600 text-sm mb-4">Enerji verimli ve çevre dostu teknoloji</p>
+                <div class="flex items-center justify-between">
+                  <span class="text-primary font-bold text-xl">₺20.000</span>
+                  <a href="/products/5" class="bg-primary text-white px-4 py-2 rounded-lg hover:bg-primary-dark transition text-sm font-semibold">
+                    Detaylar
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Product Card 6 -->
+            <div class="product-card bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-all duration-300 hover:-translate-y-1" data-category="Endüstriyel Kompresörler" data-price="9500">
+              <div class="w-full h-48 bg-gray-100 overflow-hidden">
+                <img 
+                  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ_g4Uw-A43yGpsPwFeNubOfSslFd2Xf4NwaA&s" 
+                  alt="Portatif Kompresör" 
+                  class="w-full h-full object-cover"
+                />
+              </div>
+              <div class="p-6">
+                <span class="text-primary text-sm font-semibold uppercase mb-2 block">Portatif</span>
+                <h3 class="text-xl font-bold mb-2 text-gray-900">Portatif Kompresör</h3>
+                <p class="text-gray-600 text-sm mb-4">Taşınabilir ve hafif tasarım</p>
+                <div class="flex items-center justify-between">
+                  <span class="text-primary font-bold text-xl">₺9.500</span>
+                  <a href="/products/6" class="bg-primary text-white px-4 py-2 rounded-lg hover:bg-primary-dark transition text-sm font-semibold">
+                    Detaylar
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Pagination -->
+          <div class="mt-8 flex justify-center gap-2">
+            <button class="px-4 py-2 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 transition">
+              ←
+            </button>
+            <button class="px-4 py-2 bg-primary text-white rounded-lg">1</button>
+            <button class="px-4 py-2 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 transition">
+              2
+            </button>
+            <button class="px-4 py-2 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 transition">
+              3
+            </button>
+            <button class="px-4 py-2 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 transition">
+              →
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 </Layout>
+
+<script>
+  // Filter functionality
+  const categoryAll = document.getElementById('category-all');
+  const categoryCheckboxes = document.querySelectorAll('.category-checkbox');
+  const priceRadios = document.querySelectorAll('.price-radio');
+  const productCards = document.querySelectorAll('.product-card');
+  const productCount = document.querySelector('.product-count');
+  const resetButton = document.getElementById('reset-filters');
+
+  // Get selected categories
+  function getSelectedCategories() {
+    const selected = [];
+    if (categoryAll && categoryAll.checked) {
+      return [];
+    }
+    categoryCheckboxes.forEach((checkbox) => {
+      if (checkbox.checked) {
+        selected.push(checkbox.getAttribute('value'));
+      }
+    });
+    return selected;
+  }
+
+  // Get selected price range
+  function getSelectedPriceRange() {
+    const selectedRadio = Array.from(priceRadios).find((radio) => radio.checked);
+    return selectedRadio ? selectedRadio.getAttribute('value') : 'all';
+  }
+
+  // Parse price range
+  function parsePriceRange(priceRange) {
+    if (priceRange === 'all') return [0, Infinity];
+    if (priceRange === '0-10000') return [0, 10000];
+    if (priceRange === '10000-20000') return [10000, 20000];
+    if (priceRange === '20000-30000') return [20000, 30000];
+    if (priceRange === '30000+') return [30000, Infinity];
+    return [0, Infinity];
+  }
+
+  // Filter products
+  function filterProducts() {
+    const selectedCategories = getSelectedCategories();
+    const priceRange = getSelectedPriceRange();
+    const [minPrice, maxPrice] = parsePriceRange(priceRange);
+    const showAllCategories = categoryAll && categoryAll.checked;
+
+    let visibleCount = 0;
+
+    productCards.forEach((card) => {
+      const category = card.getAttribute('data-category') || '';
+      const price = parseInt(card.getAttribute('data-price') || '0');
+
+      const categoryMatch = showAllCategories || selectedCategories.length === 0 || selectedCategories.includes(category);
+      const priceMatch = price >= minPrice && price <= maxPrice;
+
+      if (categoryMatch && priceMatch) {
+        card.style.display = '';
+        visibleCount++;
+      } else {
+        card.style.display = 'none';
+      }
+    });
+
+    if (productCount) {
+      productCount.textContent = visibleCount.toString();
+    }
+  }
+
+  // Category all checkbox
+  if (categoryAll) {
+    categoryAll.addEventListener('change', (e) => {
+      if (e.target.checked) {
+        categoryCheckboxes.forEach((cb) => {
+          cb.checked = false;
+        });
+      }
+      filterProducts();
+    });
+  }
+
+  // Category checkboxes
+  categoryCheckboxes.forEach((checkbox) => {
+    checkbox.addEventListener('change', () => {
+      if (checkbox.checked && categoryAll) {
+        categoryAll.checked = false;
+      }
+      filterProducts();
+    });
+  });
+
+  // Price radios
+  priceRadios.forEach((radio) => {
+    radio.addEventListener('change', filterProducts);
+  });
+
+  // Reset button
+  if (resetButton) {
+    resetButton.addEventListener('click', () => {
+      if (categoryAll) categoryAll.checked = true;
+      categoryCheckboxes.forEach((cb) => {
+        cb.checked = false;
+      });
+      priceRadios.forEach((radio, index) => {
+        radio.checked = index === 0;
+      });
+      filterProducts();
+    });
+  }
+
+  // Sort functionality
+  const sortSelect = document.getElementById('sort-select');
+  const productsContainer = document.getElementById('products-container');
+  
+  if (sortSelect && productsContainer) {
+    sortSelect.addEventListener('change', () => {
+      const sortValue = sortSelect.value;
+      const visibleProducts = Array.from(productCards).filter((card) => {
+        return card.style.display !== 'none';
+      });
+
+      visibleProducts.sort((a, b) => {
+        const priceA = parseInt(a.getAttribute('data-price') || '0');
+        const priceB = parseInt(b.getAttribute('data-price') || '0');
+        const nameA = a.querySelector('h3')?.textContent?.trim() || '';
+        const nameB = b.querySelector('h3')?.textContent?.trim() || '';
+
+        switch(sortValue) {
+          case 'price-asc':
+            return priceA - priceB;
+          case 'price-desc':
+            return priceB - priceA;
+          case 'name-asc':
+            return nameA.localeCompare(nameB, 'tr');
+          case 'name-desc':
+            return nameB.localeCompare(nameA, 'tr');
+          default:
+            return 0;
+        }
+      });
+
+      // Re-append sorted products
+      visibleProducts.forEach((product) => {
+        productsContainer.appendChild(product);
+      });
+    });
+  }
+
+  // Initial filter
+  filterProducts();
+</script>
+
+<style>
+  /* Custom checkbox and radio button colors */
+  input[type="checkbox"],
+  input[type="radio"] {
+    width: 1rem !important;
+    height: 1rem !important;
+    min-width: 1rem !important;
+    min-height: 1rem !important;
+    max-width: 1rem !important;
+    max-height: 1rem !important;
+    accent-color: #FF6B35;
+    cursor: pointer;
+    flex-shrink: 0;
+  }
+  
+  /* Modern browsers automatically make checkmark white with accent-color */
+  /* For older browsers, we ensure the background is orange */
+  input[type="checkbox"]:checked {
+    background-color: #FF6B35 !important;
+    border-color: #FF6B35 !important;
+  }
+  
+  input[type="radio"] {
+    width: 1rem !important;
+    height: 1rem !important;
+    min-width: 1rem !important;
+    min-height: 1rem !important;
+    max-width: 1rem !important;
+    max-height: 1rem !important;
+  }
+  
+  input[type="radio"]:checked {
+    background-color: #FF6B35 !important;
+    border-color: #FF6B35 !important;
+    width: 1rem !important;
+    height: 1rem !important;
+  }
+</style>

@@ -1,10 +1,13 @@
 ---
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
 interface Props {
   title: string;
   description?: string;
 }
 
-const { title, description = "Engineering Portfolio" } = Astro.props;
+const { title, description = "Kompresör Bayi - Endüstriyel Kompresör Çözümleri" } = Astro.props;
 ---
 
 <!doctype html>
@@ -17,13 +20,16 @@ const { title, description = "Engineering Portfolio" } = Astro.props;
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
   </head>
-  <body class="min-h-screen bg-gray-50 text-gray-900">
+  <body class="min-h-screen bg-white text-gray-900">
+    <Header />
     <slot />
+    <Footer />
   </body>
 </html>
 
 <style is:global>
   html {
     font-family: system-ui, sans-serif;
+    scroll-behavior: smooth;
   }
 </style>

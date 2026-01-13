@@ -1,0 +1,230 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+// Kategori bilgileri
+const categoryData: Record<string, { 
+  title: string; 
+  description: string; 
+  icon: string;
+  fullDescription: string;
+  features: string[];
+  applications: string[];
+}> = {
+  'endustriyel-kompresorler': {
+    title: 'Endüstriyel Kompresörler',
+    description: 'Endüstriyel tesisler için yüksek performanslı kompresör çözümleri. Verimli ve güvenilir sistemler.',
+    icon: '⚙️',
+    fullDescription: 'Endüstriyel kompresörlerimiz, büyük ölçekli üretim tesisleri ve endüstriyel uygulamalar için özel olarak tasarlanmıştır. Yüksek performans, enerji verimliliği ve uzun ömür garantisi ile işletmenizin verimliliğini artırır.',
+    features: [
+      'Yüksek basınç kapasitesi',
+      'Enerji verimli teknoloji',
+      '24/7 kesintisiz çalışma',
+      'Gelişmiş kontrol sistemleri',
+      'Düşük bakım maliyeti',
+      'Çevre dostu tasarım'
+    ],
+    applications: [
+      'Üretim tesisleri',
+      'Gıda ve içecek endüstrisi',
+      'Tekstil endüstrisi',
+      'Kimya ve petrokimya',
+      'Enerji sektörü',
+      'Madencilik'
+    ]
+  },
+  'insaat-muhendislik': {
+    title: 'İnşaat & Mühendislik',
+    description: 'İnşaat sektörü için özel tasarlanmış kompresör ve hava sistemleri. Projelerinize güç katıyoruz.',
+    icon: '🏗️',
+    fullDescription: 'İnşaat ve mühendislik projeleriniz için tasarlanmış kompresör sistemlerimiz, saha koşullarına uygun dayanıklılık ve performans sunar. Portatif ve sabit kurulum seçenekleri ile her türlü inşaat projenize uygun çözümler sağlıyoruz.',
+    features: [
+      'Portatif ve sabit kurulum',
+      'Dayanıklı saha tasarımı',
+      'Kolay taşınabilirlik',
+      'Yüksek verimlilik',
+      'Geniş basınç aralığı',
+      'Hızlı kurulum'
+    ],
+    applications: [
+      'İnşaat sahaları',
+      'Altyapı projeleri',
+      'Tünel inşaatı',
+      'Köprü inşaatı',
+      'Bina yapımı',
+      'Yol yapımı'
+    ]
+  },
+  'otomotiv-makine-muhendisligi': {
+    title: 'Otomotiv & Makine Mühendisliği',
+    description: 'Otomotiv ve makine endüstrisi için özel kompresör sistemleri. Teknik uzmanlık ve kalite garantisi.',
+    icon: '🔧',
+    fullDescription: 'Otomotiv ve makine mühendisliği sektörü için özel olarak geliştirilmiş kompresör sistemlerimiz, hassas kontrol ve yüksek performans gerektiren uygulamalarda mükemmel sonuçlar verir. Üretim hatlarınızın verimliliğini artırmak için ideal çözümler sunuyoruz.',
+    features: [
+      'Hassas basınç kontrolü',
+      'Yüksek kalite standartları',
+      'Otomasyon uyumluluğu',
+      'Kompakt tasarım',
+      'Düşük gürültü seviyesi',
+      'Uzun ömür garantisi'
+    ],
+    applications: [
+      'Otomotiv üretim hatları',
+      'Makine imalatı',
+      'Kalıpçılık ve pres',
+      'Boyama sistemleri',
+      'Montaj hatları',
+      'Test ve kalite kontrol'
+    ]
+  }
+};
+
+export async function getStaticPaths() {
+  const categories = ['endustriyel-kompresorler', 'insaat-muhendislik', 'otomotiv-makine-muhendisligi'];
+  return categories.map((category) => ({
+    params: { category },
+    props: { category }
+  }));
+}
+
+interface Props {
+  category: string;
+}
+
+const { category } = Astro.props;
+const decodedCategory = category;
+
+const categoryInfo = categoryData[decodedCategory] || {
+  title: decodedCategory.replace(/-/g, ' '),
+  description: 'Bu kategori hakkında bilgiler',
+  icon: '⚙️'
+};
+---
+
+<Layout title={`${categoryInfo.title} - Kompresör Bayi`}>
+  <!-- Header Section -->
+  <section class="bg-gray-900 text-white py-16 md:py-24">
+    <div class="container">
+      <div class="text-center">
+        <div class="text-7xl mb-6">{categoryInfo.icon}</div>
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-4">
+          {categoryInfo.title}
+        </h1>
+        <p class="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto">
+          {categoryInfo.description}
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Content Section -->
+  <section class="py-16 md:py-20 bg-white">
+    <div class="container">
+      <div class="max-w-4xl mx-auto">
+        <h2 class="text-3xl md:text-4xl font-bold mb-6 text-gray-900">Hakkında</h2>
+        <p class="text-lg text-gray-700 leading-relaxed mb-8">
+          {categoryInfo.fullDescription}
+        </p>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12 mt-12">
+          <!-- Features -->
+          <div>
+            <h3 class="text-2xl font-bold mb-6 text-gray-900">Özellikler</h3>
+            <ul class="space-y-4">
+              {categoryInfo.features.map((feature) => (
+                <li class="flex items-start gap-3">
+                  <span class="text-primary text-xl mt-1">✓</span>
+                  <span class="text-gray-700">{feature}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <!-- Applications -->
+          <div>
+            <h3 class="text-2xl font-bold mb-6 text-gray-900">Uygulama Alanları</h3>
+            <ul class="space-y-4">
+              {categoryInfo.applications.map((application) => (
+                <li class="flex items-start gap-3">
+                  <span class="text-primary text-xl mt-1">•</span>
+                  <span class="text-gray-700">{application}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Products Section -->
+  <section class="py-16 md:py-20 bg-gray-50">
+    <div class="container">
+      <h2 class="text-3xl md:text-4xl font-bold mb-8 text-center text-gray-900">Ürünlerimiz</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+        <!-- Sample Products for this category -->
+        <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+          <div class="w-full h-48 bg-gray-100 overflow-hidden">
+            <img 
+              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ_g4Uw-A43yGpsPwFeNubOfSslFd2Xf4NwaA&s" 
+              alt={categoryInfo.title} 
+              class="w-full h-full object-cover"
+            />
+          </div>
+          <div class="p-6">
+            <span class="text-primary text-sm font-semibold uppercase mb-2 block">{categoryInfo.title}</span>
+            <h3 class="text-xl font-bold mb-2 text-gray-900">{categoryInfo.title} - Model 1</h3>
+            <p class="text-gray-600 text-sm mb-4">{categoryInfo.description}</p>
+            <div class="flex items-center justify-between">
+              <span class="text-primary font-bold text-xl">₺15.000</span>
+              <a href="/products/1" class="bg-primary text-white px-4 py-2 rounded-lg hover:bg-primary-dark transition text-sm font-semibold">
+                Detaylar
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+          <div class="w-full h-48 bg-gray-100 overflow-hidden">
+            <img 
+              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSp8kPydSVrn4vey_Trh583QdENzIf8_UbfrA&s" 
+              alt={categoryInfo.title} 
+              class="w-full h-full object-cover"
+            />
+          </div>
+          <div class="p-6">
+            <span class="text-primary text-sm font-semibold uppercase mb-2 block">{categoryInfo.title}</span>
+            <h3 class="text-xl font-bold mb-2 text-gray-900">{categoryInfo.title} - Model 2</h3>
+            <p class="text-gray-600 text-sm mb-4">{categoryInfo.description}</p>
+            <div class="flex items-center justify-between">
+              <span class="text-primary font-bold text-xl">₺18.000</span>
+              <a href="/products/2" class="bg-primary text-white px-4 py-2 rounded-lg hover:bg-primary-dark transition text-sm font-semibold">
+                Detaylar
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+          <div class="w-full h-48 bg-gray-100 overflow-hidden">
+            <img 
+              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ1zJUh-7GObMYK7hzSndq2C9cA-sVphPTQOg&s" 
+              alt={categoryInfo.title} 
+              class="w-full h-full object-cover"
+            />
+          </div>
+          <div class="p-6">
+            <span class="text-primary text-sm font-semibold uppercase mb-2 block">{categoryInfo.title}</span>
+            <h3 class="text-xl font-bold mb-2 text-gray-900">{categoryInfo.title} - Model 3</h3>
+            <p class="text-gray-600 text-sm mb-4">{categoryInfo.description}</p>
+            <div class="flex items-center justify-between">
+              <span class="text-primary font-bold text-xl">₺22.000</span>
+              <a href="/products/3" class="bg-primary text-white px-4 py-2 rounded-lg hover:bg-primary-dark transition text-sm font-semibold">
+                Detaylar
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>
