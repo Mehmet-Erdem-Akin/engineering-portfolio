@@ -8,6 +8,30 @@ Astro.js + Tailwind CSS ile oluşturulmuş modern, hızlı ve SEO uyumlu portfol
 npm install
 ```
 
+### Environment Variables
+
+Projeyi çalıştırmadan önce `.env` dosyası oluşturun:
+
+```bash
+cp .env.example .env
+```
+
+`.env` dosyasını düzenleyin ve gerekli değişkenleri ekleyin:
+
+```env
+PUBLIC_GOOGLE_SHEETS_WEB_APP_URL=https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec
+```
+
+**Google Sheets Web App URL Nasıl Alınır?**
+
+Detaylı kurulum için `GOOGLE_APPS_SCRIPT.md` dosyasına bakın. Kısaca:
+
+1. Google Sheets oluşturun
+2. Extensions → Apps Script'e gidin
+3. `GOOGLE_APPS_SCRIPT.md` dosyasındaki kodu yapıştırın
+4. Deploy → New deployment → Web app
+5. Oluşan URL'yi `.env` dosyasına ekleyin
+
 ## 📝 Geliştirme
 
 Geliştirme sunucusunu başlatmak için:
@@ -49,6 +73,7 @@ Build çıktısı `dist/` klasöründe oluşur. Bu klasörü Nginx sunucusuna y�
 - 🔍 SEO optimizasyonu
 - 🚀 Statik site generation (SSG)
 - 💰 Düşük hosting maliyeti (Nginx ile)
+- 📊 Google Sheets ile form verilerini otomatik kaydetme
 
 ## 📄 Sayfalar
 
@@ -71,8 +96,22 @@ Build çıktısı `dist/` klasöründe oluşur. Bu klasörü Nginx sunucusuna y�
 ### Hakkımızda Sayfası
 ![Hakkımızda Sayfası](public/FireShot%20Capture%20006%20-%20Hakk%C4%B1m%C4%B1zda%20-%20%5Blocalhost%5D.png)
 
+## 📊 Google Sheets Entegrasyonu
+
+İletişim formu, Google Apps Script kullanarak form verilerini Google Sheets'e otomatik olarak kaydeder.
+
+### Hızlı Kurulum
+
+1. Google Sheets oluşturun ve başlık satırını ekleyin (Tarih, Ad Soyad, E-posta, Telefon, Konu, Mesaj)
+2. `GOOGLE_APPS_SCRIPT.md` dosyasındaki adımları takip edin
+3. Google Apps Script'i Web App olarak deploy edin
+4. Web App URL'sini `.env` dosyasına ekleyin
+
+Detaylı kurulum için: [GOOGLE_APPS_SCRIPT.md](./GOOGLE_APPS_SCRIPT.md)
+
 ## 🔧 Teknolojiler
 
 - [Astro](https://astro.build/)
 - [Tailwind CSS](https://tailwindcss.com/)
 - TypeScript
+- Google Apps Script (Form entegrasyonu)

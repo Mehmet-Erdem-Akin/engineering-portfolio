@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://engineering-portfolio.netlify.app/sitemap.xml
+
+# Crawl-delay (opsiyonel)
+Crawl-delay: 1

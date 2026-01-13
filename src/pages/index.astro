@@ -1,9 +1,50 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Card from '../components/Card.astro';
+
+const siteUrl = "https://engineering-portfolio.netlify.app";
+
+const organizationSchema = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Kompresör Bayi",
+  "url": siteUrl,
+  "logo": `${siteUrl}/Gemini_Generated_Image_v31j9gv31j9gv31j.png`,
+  "description": "Endüstriyel kompresör çözümlerinde lider firma. Yılların deneyimi ve uzman kadromuzla sektörde öncü bir konumdayız.",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "İstanbul",
+    "addressCountry": "TR"
+  },
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "telephone": "+90-555-123-45-67",
+    "contactType": "customer service",
+    "areaServed": "TR",
+    "availableLanguage": ["Turkish"]
+  },
+  "sameAs": [
+    // Sosyal medya linklerinizi buraya ekleyin
+  ]
+};
+
+const websiteSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "Kompresör Bayi",
+  "url": siteUrl,
+  "description": "Endüstriyel kompresör çözümlerinde lider firma",
+  "publisher": {
+    "@type": "Organization",
+    "name": "Kompresör Bayi"
+  }
+};
 ---
 
-<Layout title="Ana Sayfa - Kompresör Bayi">
+<Layout title="Ana Sayfa - Kompresör Bayi" canonical="/">
+  {/* Structured Data */}
+  <script type="application/ld+json" set:html={JSON.stringify(organizationSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(websiteSchema)} />
   <!-- Hero Section -->
   <section class="relative bg-gray-900 text-white py-16 md:py-24">
     <div class="container relative z-10">

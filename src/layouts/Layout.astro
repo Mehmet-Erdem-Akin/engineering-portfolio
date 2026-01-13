@@ -5,20 +5,61 @@ import Footer from '../components/Footer.astro';
 interface Props {
   title: string;
   description?: string;
+  image?: string;
+  type?: string;
+  canonical?: string;
 }
 
-const { title, description = "Kompresör Bayi - Endüstriyel Kompresör Çözümleri" } = Astro.props;
+const { 
+  title, 
+  description = "Kompresör Bayi - Endüstriyel Kompresör Çözümleri",
+  image = "https://engineering-portfolio.netlify.app/Gemini_Generated_Image_v31j9gv31j9gv31j.png",
+  type = "website",
+  canonical
+} = Astro.props;
+
+const siteUrl = "https://engineering-portfolio.netlify.app";
+const currentUrl = canonical || Astro.url.pathname;
+const fullUrl = siteUrl + currentUrl;
+const ogImage = image.startsWith('http') ? image : siteUrl + image;
 ---
 
 <!doctype html>
 <html lang="tr">
   <head>
     <meta charset="UTF-8" />
-    <meta name="description" content={description} />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
+    
+    <!-- Primary Meta Tags -->
     <title>{title}</title>
+    <meta name="title" content={title} />
+    <meta name="description" content={description} />
+    <meta name="robots" content="index, follow" />
+    <meta name="language" content="Turkish" />
+    <meta name="author" content="Kompresör Bayi" />
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href={fullUrl} />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content={type} />
+    <meta property="og:url" content={fullUrl} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:locale" content="tr_TR" />
+    <meta property="og:site_name" content="Kompresör Bayi" />
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content={fullUrl} />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   </head>
   <body class="min-h-screen bg-white text-gray-900">
     <Header />

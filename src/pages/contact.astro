@@ -25,7 +25,17 @@ import Layout from '../layouts/Layout.astro';
           <p class="text-gray-600 mb-8">
             Projeleriniz veya sorularınız için bizimle iletişime geçebilirsiniz. Size en kısa sürede dönüş yapacağız.
           </p>
-          <form class="space-y-6">
+          <form id="contact-form" class="space-y-6">
+            <!-- Success Message -->
+            <div id="success-message" class="hidden bg-green-50 border border-green-200 text-green-800 px-4 py-3 rounded-lg mb-4">
+              Mesajınız başarıyla gönderildi! En kısa sürede size dönüş yapacağız.
+            </div>
+            
+            <!-- Error Message -->
+            <div id="error-message" class="hidden bg-red-50 border border-red-200 text-red-800 px-4 py-3 rounded-lg mb-4">
+              Bir hata oluştu. Lütfen tekrar deneyin veya doğrudan e-posta gönderin.
+            </div>
+
             <div>
               <label for="name" class="block text-sm font-medium text-gray-700 mb-2">
                 Ad Soyad <span class="text-red-500">*</span>
@@ -91,10 +101,11 @@ import Layout from '../layouts/Layout.astro';
             </div>
             <button
               type="submit"
-              class="w-full bg-primary hover:bg-primary-dark text-white py-3 px-6 rounded-lg font-semibold transition inline-flex items-center justify-center gap-2"
+              id="submit-btn"
+              class="w-full bg-primary hover:bg-primary-dark text-white py-3 px-6 rounded-lg font-semibold transition inline-flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
             >
-              Gönder
-              <span>→</span>
+              <span id="submit-text">Gönder</span>
+              <span id="submit-icon">→</span>
             </button>
           </form>
         </div>
@@ -204,3 +215,87 @@ import Layout from '../layouts/Layout.astro';
     </div>
   </section>
 </Layout>
+
+<script>
+  const form = document.getElementById('contact-form');
+  const submitBtn = document.getElementById('submit-btn');
+  const submitText = document.getElementById('submit-text');
+  const submitIcon = document.getElementById('submit-icon');
+  const successMessage = document.getElementById('success-message');
+  const errorMessage = document.getElementById('error-message');
+
+  // Google Sheets Web App URL - .env'den alınacak
+  // PUBLIC_ prefix'i client-side kodda kullanılabilir hale getirir
+  const GOOGLE_SHEETS_WEB_APP_URL = import.meta.env.PUBLIC_GOOGLE_SHEETS_WEB_APP_URL || '';
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    
+    // Mesajları gizle
+    if (successMessage) successMessage.classList.add('hidden');
+    if (errorMessage) errorMessage.classList.add('hidden');
+
+    // Form verilerini al
+    const formData = new FormData(form);
+    const data = {
+      name: formData.get('name'),
+      email: formData.get('email'),
+      phone: formData.get('phone') || '',
+      subject: formData.get('subject') || '',
+      message: formData.get('message'),
+      timestamp: new Date().toISOString()
+    };
+
+    // Submit butonunu devre dışı bırak
+    if (submitBtn) {
+      submitBtn.disabled = true;
+      if (submitText) submitText.textContent = 'Gönderiliyor...';
+      if (submitIcon) submitIcon.textContent = '⏳';
+    }
+
+    try {
+      if (!GOOGLE_SHEETS_WEB_APP_URL) {
+        throw new Error('Google Sheets Web App URL yapılandırılmamış. Lütfen .env dosyasını kontrol edin.');
+      }
+
+      // Google Apps Script webhook'a POST isteği gönder
+      const response = await fetch(GOOGLE_SHEETS_WEB_APP_URL, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data)
+      });
+
+      // no-cors modunda response alınamaz, bu yüzden başarılı kabul ediyoruz
+      // Google Apps Script doPost fonksiyonu veriyi Sheets'e yazacak
+      
+      // Formu temizle
+      form.reset();
+      
+      // Başarı mesajını göster
+      if (successMessage) {
+        successMessage.classList.remove('hidden');
+        successMessage.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      }
+    } catch (error) {
+      console.error('Form gönderim hatası:', error);
+      if (errorMessage) {
+        errorMessage.classList.remove('hidden');
+        errorMessage.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      }
+    } finally {
+      // Submit butonunu tekrar etkinleştir
+      if (submitBtn) {
+        submitBtn.disabled = false;
+        if (submitText) submitText.textContent = 'Gönder';
+        if (submitIcon) submitIcon.textContent = '→';
+      }
+    }
+  };
+
+  if (form) {
+    form.addEventListener('submit', handleSubmit);
+  }
+</script>
