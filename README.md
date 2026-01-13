@@ -57,6 +57,20 @@ Build çıktısı `dist/` klasöründe oluşur. Bu klasörü Nginx sunucusuna y�
 - `/products` - Ürünler
 - `/contact` - İletişim
 
+## 📸 Ekran Görüntüleri
+
+### Ana Sayfa
+![Ana Sayfa](public/FireShot%20Capture%20003%20-%20Ana%20Sayfa%20-%20Kompres%C3%B6r%20Bayi%20-%20%5Blocalhost%5D.png)
+
+### Ürünler Sayfası
+![Ürünler Sayfası](public/FireShot%20Capture%20002%20-%20%C3%9Cr%C3%BCnler%20-%20Kompres%C3%B6r%20Bayi%20-%20%5Blocalhost%5D.png)
+
+### İletişim Sayfası
+![İletişim Sayfası](public/FireShot%20Capture%20005%20-%20%C4%B0leti%C5%9Fim%20-%20%5Blocalhost%5D%20%281%29.png)
+
+### Hakkımızda Sayfası
+![Hakkımızda Sayfası](public/FireShot%20Capture%20006%20-%20Hakk%C4%B1m%C4%B1zda%20-%20%5Blocalhost%5D.png)
+
 ## 🔧 Teknolojiler
 
 - [Astro](https://astro.build/)
